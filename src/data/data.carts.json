@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "products": [
+      {
+        "id": 1,
+        "name": "Algas Nori - 10 Unidades",
+        "price": 500,
+        "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/algas%2010%20okok.png?alt=media&token=9b1ee142-0bad-4e4d-934c-4b536c097ccb",
+        "description": "El alga nori es la clase de algas marinas que se utiliza en la preparación del sushi. Incluso, también pueden ser aprovechadas en una amplia variedad de platos como ensaladas crudas, sopas de vegetales y pastas"
+      },
+      {
+        "id": 2,
+        "name": "Salsa de Soja Agiibo",
+        "price": 1400,
+        "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/salsa%20de%20soja%20okok.png?alt=media&token=280aa665-1838-46f2-8e6f-e5cdb695c1f5",
+        "description": "Es ideal para acompañar comidas tanto orientales como occidentales ya sean verduras fritas, arroz, empanizados, al igual que sopas, incluso algunas gotas agregadas a aderezos de ensaladas, además también puede ser incluida con las carnes ya que su sabor es ideal para marinarlas o freírlas como pescado, pollo, res, cerdo etc. Es un condimento salado, pero con un toque dulce"
+      },
+      {
+        "id": 3,
+        "name": "lkndwknlsandladasd",
+        "price": 500,
+        "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/algas%2010%20okok.png?alt=media&token=9b1ee142-0bad-4e4d-934c-4b536c097ccb",
+        "description": "El alga nori es la clase de algas marinas que se utiliza en la preparación del sushi. Incluso, también pueden ser aprovechadas en una amplia variedad de platos como ensaladas crudas, sopas de vegetales y pastas"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "products": []
+  }
+]

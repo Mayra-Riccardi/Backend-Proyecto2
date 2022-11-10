@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Algas Nori - 10 Unidades",
+      "price": 500,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/algas%2010%20okok.png?alt=media&token=9b1ee142-0bad-4e4d-934c-4b536c097ccb",
+      "description": "El alga nori es la clase de algas marinas que se utiliza en la preparación del sushi. Incluso, también pueden ser aprovechadas en una amplia variedad de platos como ensaladas crudas, sopas de vegetales y pastas"
+    },
+    {
+      "id": 2,
+      "name": "Salsa de Soja Agiibo",
+      "price": 1400,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/salsa%20de%20soja%20okok.png?alt=media&token=280aa665-1838-46f2-8e6f-e5cdb695c1f5",
+      "description": "Es ideal para acompañar comidas tanto orientales como occidentales ya sean verduras fritas, arroz, empanizados, al igual que sopas, incluso algunas gotas agregadas a aderezos de ensaladas, además también puede ser incluida con las carnes ya que su sabor es ideal para marinarlas o freírlas como pescado, pollo, res, cerdo etc. Es un condimento salado, pero con un toque dulce"
+    },
+    {
+      "id": 3,
+      "name": "Arroz Kometo",
+      "price": 300,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/arroz%20kometo%20(1).png?alt=media&token=451e7aa4-ef96-40c5-9d64-a5e38db6493f",
+      "description": "Arroz ideal para preparar sushi. Alimento rico y saludable"
+    },
+    {
+      "id": 4,
+      "name": "Kit Sushi - 11 Ingredientes",
+      "price": 4658,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/kit%20okok.png?alt=media&token=cc9b4a8d-a21c-4b29-8f64-dcb2db6de997",
+      "description": "Si sos amante del sushi y te animás a hacerlo en casa. este kit es ideal para empezar."
+    },
+    {
+      "id": 5,
+      "name": "Salsa Agridulce Fumeiga",
+      "price": 600,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/fumeiga%20okok.png?alt=media&token=a0a3d04c-3ee3-41d1-8998-c49c69f130a7",
+      "description": "Una de las salsas más conocidas, gracias a su combinación de frescura, dulzor y acidez moderada. Originaria de la cocina China y oriental. Ideal para Carnes, Pastas, Arroz y frituras"
+    },
+    {
+      "id": 6,
+      "name": "Kit Sushi - 7 Ingredientes",
+      "price": 3299,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/kit%20okok.png?alt=media&token=cc9b4a8d-a21c-4b29-8f64-dcb2db6de997",
+      "description": "Si sos amante del sushi y te animás a hacerlo en casa. este kit es ideal para empezar"
+    },
+    {
+      "id": 7,
+      "name": "Arroz Arborio",
+      "price": 1900,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/arroz%20arborio%20okok.png?alt=media&token=c519589b-1549-4914-9f1a-e0ac0c65708b",
+      "description": "Es un arroz superfino, cuyos granos grandes, con firmeza acentuada y aspecto perlado, tienen la propiedad de liberar almidón sobre la cocción garantizando una óptima cremosidad"
+    },
+    {
+      "id": 8,
+      "name": "Arroz Fortuna",
+      "price": 900,
+      "image": "https://firebasestorage.googleapis.com/v0/b/ecom-you-need-sushi.appspot.com/o/arroz%20fortuna%20okok.png?alt=media&token=7bdbeab1-b11a-4d17-a17d-6202f5dfa50c",
+      "description": "Arroz ideal para preparar sushi. Alimento rico y saludable. Envase por 30kg"
+    }
+  ]
+}
