@@ -1,12 +1,27 @@
 {
-  "name": "backend",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.2.0",
+    "mongoose": "^6.7.2"
+  },
+  "name": "backend-proyecto2",
   "version": "1.0.0",
-  "description": "",
-  "main": "clase4.js",
+  "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mayra-Riccardi/Backend-Proyecto2.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mayra-Riccardi/Backend-Proyecto2/issues"
+  },
+  "homepage": "https://github.com/Mayra-Riccardi/Backend-Proyecto2#readme",
+  "description": ""
 }
