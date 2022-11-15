@@ -1,7 +1,9 @@
 const MemoryContainer = require('../../containers/memory.container');
-const ProductsMemoryDAO = require('../products/products.memory.dao');
 
-/* const productsMemoryDAO = new ProductsMemoryDAO */;
+const { HttpError } = require('../../../utils/api.utils');
+const { HTTP_STATUS } = require('../../../constants/api.constants');
+
+
 
 const collection = 'carts';
 
@@ -17,7 +19,11 @@ class CartsMemoryContainer extends MemoryContainer{
 
     async addProduct(idCart,idProd){
         let id = idProd ;
-        let cart = this.getById(idCart);                                
+        let cart = this.getById(idCart);
+        if (!cart) {
+            const message = `${this.resource} with id ${productId} does not exist.`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
+          }                                
         cart.products.push({id})               
         this.update(idCart, cart)
         
@@ -30,7 +36,7 @@ class CartsMemoryContainer extends MemoryContainer{
 
       if (index < 0) {
         const message = `${this.resource} with id ${productId} does not exist.`;
-       console.log(message) 
+        throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
       }      
         cart.products.splice(index, 1);        
         this.update(idCart,cart)

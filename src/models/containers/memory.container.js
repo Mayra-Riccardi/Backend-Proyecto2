@@ -1,5 +1,8 @@
 const { v4: uuidv4 } = require('uuid');
 
+const { HTTP_STATUS } = require('../../constants/api.constants');
+const { HttpError } = require('../../utils/api.utils');
+
 class MemoryContainer {
     constructor(resource){
         this.data = [];
@@ -15,15 +18,21 @@ class MemoryContainer {
 
     getById(id) {
         const item = this.data.find(item => item.id === id)
+
+        if (!item) {
+            const message = `${this.resource} with id ${id} does not exist in our records`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+          }
         return item;
     }
 
     update(id, item) {
         const indexForUpdate = this.data.findIndex( (item) => item.id === id)
 
-        if(indexForUpdate === -1){
-            return console.log(`Item con id ${id} no encontrado!`)
-        }
+        if (indexForUpdate === -1) {
+            const message = `${this.resource} with id ${id} does not exist in our records`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+          }
         
         const updatedItem = {
             ...this.data[indexForUpdate],
@@ -42,9 +51,10 @@ class MemoryContainer {
     delete(id) {
         const indexForDeleted = this.data.findIndex ((item) => item.id === id)
 
-        if(indexForDeleted === -1){
-            return console.log(`Item con id ${id} no encontrado!`)
-        }
+        if (indexForDeleted === -1) {
+            const message = `${this.resource} with id ${id} does not exist in our records`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+          }
 
         this.data.splice(indexForDeleted, 1);
     }

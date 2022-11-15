@@ -2,6 +2,8 @@ const FirebaseContainer = require('../../containers/firebase.container');
 const { FieldValue  } = require('firebase-admin/firestore');
 
 const ProductsFirebaseDao = require('../products/products.firebase.dao');
+const { HttpError } = require('../../../utils/api.utils');
+const { HTTP_STATUS } = require('../../../constants/api.constants');
 
 
 
@@ -26,7 +28,7 @@ class CartsFirebaseDao extends FirebaseContainer {
       const docRef = this.query.doc(idCart);
       if (!docRef) {
         const message = `Cart with id ${idCart} does not exist`;
-        console.log(message)
+        throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
       }
 
       return await docRef.update({ products: FieldValue.arrayUnion(idProd) })
@@ -38,7 +40,7 @@ class CartsFirebaseDao extends FirebaseContainer {
       const docRef = this.query.doc(idCart)  
       if (!docRef) {
         const message = `Cart with id ${cartId} does not exist.`;
-        console.log(message)
+        throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
       }
       return await docRef.update({ products: FieldValue.arrayRemove(idProd) })
     }

@@ -1,6 +1,9 @@
 const mongoose = require ('mongoose');
 const dbConfig = require('../../db/db.config');
 
+const { HTTP_STATUS } = require('../../constants/api.constants');
+const { HttpError } = require('../../utils/api.utils');
+
 class MongoContainer {
     constructor(collection, schema) {
         this.model = mongoose.model(collection, schema);
@@ -23,7 +26,8 @@ class MongoContainer {
     async getById(id) {
         const document = await this.model.findOne({_id:id}, {__v: 0});
         if (!document){
-            console.log("El documento no existe")
+            const message = `Resource with id ${id} does not exist in our records.`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
         }
         return document;
     }
@@ -39,15 +43,23 @@ class MongoContainer {
             {_id: id},
             { $set: {...item}, }
         );
-       /*  if (!updatedDocument.matchedCount){
-            console.log("Error")
-        } */
+        if (!updatedDocument.matchedCount){
+            const message = `Resource with id ${id} does not exist in our records.`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+        }
 
         return updatedDocument;
     }
 
     async delete(id) {
-        return await this.model.deleteOne({_id: id});
+        const deletedDocument = await this.model.deleteOne({_id: id});
+
+        if (!deletedDocument.deletedCount){
+            const message = `Resource with id ${id} does not exist in our records.`;
+            throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+        }
+
+        return deletedDocument
     }
 }
 

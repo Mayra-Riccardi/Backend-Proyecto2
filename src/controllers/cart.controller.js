@@ -1,71 +1,102 @@
 const  { CartDao } = require("../models/daos/app.daos");
+const HTTP_STATUS = require('../constants/api.constants');
+const { successResponse } = require('../utils/api.utils');
 
 const cartDao = new CartDao();
 
 class CartsController {
     
-    static getCarts = async (req, res) => {
+    getCarts = async ( req, res, next ) => {
+      try{
         const carts = await cartDao.getAll();
-    /*     if(!carts < 1){
-          res.status(404).send(error)
-        } */
-          res.status(200).send({status: "OK", data: carts})
+        const response = successResponse(carts);
+        res.json(response);
+      }
+      catch (error) {
+        next(error);
+    }
     }
 
-    static createCart = async (req,res) => {
-      const newCart = await cartDao.save({products: []})
-      res.status(200).send({status: "OK", data: newCart})
+    createCart = async (req,res, next) => {
+      try{
+         const newCart = await cartDao.save({products: []})
+         const response = successResponse(newCart);
+         res.json(response);
+      }
+      catch (error) {
+        next(error);
     }
-
-
-    static getOneCart = async (req, res) => {
-      const { idCart } = req.params;
-      const cart = await cartDao.getById(idCart);
-
-      res.status(200).send({status: "OK", data: cart}) 
-
-    }
-
-    static getProductsCart = async (req, res) => {
-      const { idCart } = req.params;
-      const cartProd = await cartDao.getCartProds(idCart)
-      
-
-     /*  if(!cart){
-        res.status(404).send(error.message)
-      } */
-      res.status(200).send({status: "OK", data: cartProd}) 
     }
 
 
-    static deleteOneCart = async (req, res) => {
+    getOneCart = async (req, res, next) => {
+      try{
+          const { idCart } = req.params;
+          const cart = await cartDao.getById(idCart);
+
+          const response = successResponse(cart);
+          res.json(response);
+      }
+
+      catch (error) {
+          next(error);
+    }
+}
+
+    getProductsCart = async (req, res, next) => {
+      try{
+          const { idCart } = req.params;
+          const cartProd = await cartDao.getCartProds(idCart)
+          const response = successResponse(cartProd);
+          res.json(response);
+      }
+
+      catch (error) {
+          next(error);
+      }
+  }
+
+
+    deleteOneCart = async (req, res, next) => {
         const { params: {idCart}} = req;
-        if (!idCart) {
-            return {error: `No se escribio un id ${id} existente`}
+        try{
+           const deletedCart = cartDao.delete(idCart);
+           const response = successResponse(deletedCart);
+          res.json(response);
         }
-    
-        const deletedCart = cartDao.delete(idCart);
-        res.status(200).send({status: "OK", data: deletedCart})
-    }
+        catch (error) {
+          next(error);
+      }
+  }
 
-    static saveOneProductCart = async (req, res) => {
+    saveOneProductCart = async (req, res, next) => {
+      try{
         const {idCart, idProd} = req.params;
-
         const products = await cartDao.addProduct(idCart, idProd);
-         
-        res.status(200).send({status: "OK", data: products})
+
+        const response = successResponse(products);
+        res.json(response);
     }
+      catch (error) {
+        next(error);
+    }
+  }
 
 
-    static deleteOneProductCart =  async (req, res) => {
+    deleteOneProductCart =  async (req, res, next) => {
         const { idCart, idProd } = req.params;
-
+    try{
        const deleteOneProduct = cartDao.deleteProduct(idCart, idProd);
-       res.status(202).send({ status: "Delete", data: deleteOneProduct });
-    }
+       const response = successResponse(deleteOneProduct);
+       res.json(response);
+   }
+     catch (error) {
+       next(error);
+   }
+}
 
     
 }
 
 
-module.exports = CartsController
+module.exports = new CartsController

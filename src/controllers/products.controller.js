@@ -1,27 +1,40 @@
 const  { ProductsDao } = require("../models/daos/app.daos");
+const HTTP_STATUS = require('../constants/api.constants');
+const { successResponse } = require('../utils/api.utils');
 
 
 const productsDao = new ProductsDao();
 
 class ProductController {
     
-    getAllProducts = async (req, res) => {
-        const allProducts = await productsDao.getAll();
-        res.send({status: "OK", data: allProducts})
+    getAllProducts = async (req, res, next) => {
+        try{
+           const allProducts = await productsDao.getAll();
+           const response = successResponse(allProducts);
+           res.json(response);
+        }
+        catch (error) {
+            next(error);
+        }
     };
 
-    getProductId = async (req, res) => {
+    getProductId = async (req, res, next) => {
         const { idProduct } = req.params;
-        const product = await productsDao.getById(idProduct)
-        if (product.error) return res.status(404).send(product.error);
-        return res.json(product);
+        try{
+           const product = await productsDao.getById(idProduct)
+           const response = successResponse(product)
+           res.json(response)
+           return res.json(product);
+        }
+        catch (error) {
+            next(error);
+        }
       };
 
-    saveNewProduct = async (req,res) => {
+    saveNewProduct = async (req,res, next) => {
         const { title, price, imageUrl, stock, description } = req.body
-        if (!title || !price || !imageUrl, !stock, !description ) return null;
-        
-        /* productsDao.idCount++ */
+        try{
+           /* if (!title || !price || !imageUrl, !stock, !description ) return null; */
             const newProduct = {
                 title,
                 price,
@@ -30,31 +43,38 @@ class ProductController {
                 description
             }
         
-        
-        const saveProduct = await productsDao.save(newProduct);
-        res.status(201).send({status: "OK", data: saveProduct})
+            const saveProduct = await productsDao.save(newProduct);
+            const response = successResponse(saveProduct);
+            res.json(response);
+        }
+        catch (error) {
+            next(error);
+        }
     }
 
-    updateOneProduct = async (req,res) => {
+    updateOneProduct = async (req,res, next) => {
         const { body, params: {idProduct},} = req;
        
-        if (!idProduct) {
-            return {error: `Producto con ID ${idProduct} no encontrado`}
+        try{ 
+            const updatedProduct = await productsDao.update(idProduct, body)
+            const response = successResponse(updatedProduct);
+            res.json(response);
         }
-    
-        const updatedProduct = await productsDao.update(idProduct, body)
-        res.send({status: "OK", data: updatedProduct})
+        catch (error) {
+            next(error);
+        }
     }
 
-    deleteOneProduct = async (req, res) => {
+    deleteOneProduct = async (req, res, next) => {
         const { params: {idProduct},} = req;
-    
-        if (!idProduct) {
-            return {error: `Producto con ID ${idProduct} no encontrado`}
+        try{
+            const deletedProduct = await productsDao.delete(idProduct);
+            const response = successResponse(deletedProduct);
+            res.json(response);
         }
-    
-        await productsDao.delete(idProduct);
-        res.status(204).send({status: "OK"})
+        catch (error) {
+            next(error);
+        }
     }
 
 }

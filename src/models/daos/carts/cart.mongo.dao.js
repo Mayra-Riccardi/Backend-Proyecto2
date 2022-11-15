@@ -2,6 +2,8 @@ const { Schema } = require('mongoose');
 const MongoContainer = require("../../containers/mongo.container");
 const ProductsMongoDao = require('../products/products.mongo.dao');
 
+const { HttpError } = require('../../../utils/api.utils');
+const { HTTP_STATUS } = require('../../../constants/api.constants');
 
 const productsMongoDao = new ProductsMongoDao
 
@@ -32,7 +34,7 @@ class CartsMongoDao extends MongoContainer {
       )
       if (!addProductCart.matchedCount) {
         const message = `Cart with id ${idCart} does not exist`;
-        console.log(message)
+        throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
       }
       return product;
     }
@@ -45,7 +47,7 @@ class CartsMongoDao extends MongoContainer {
       )
       if (!deleteProduct.matchedCount) {
         const message = `Cart with id ${cartId} does not exist.`;
-        console.log(message)
+        throw new HttpError(HTTP_STATUS.NOT_FOUND, message)
       }
       return deleteProduct;
     }
