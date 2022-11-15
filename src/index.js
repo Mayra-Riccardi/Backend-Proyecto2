@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 8080;
 
 const DATASOURCE_BY_ENV = {
   mongo: require('./models/containers/mongo.container'),
-  /* firebase: require('./models/containers/firebase.container') */
+  firebase: require('./models/containers/firebase.container'),
+  file: require('./models/containers/file.container'),
+  memory: require('./models/containers/memory.container')
 }
 
 const datasource = DATASOURCE_BY_ENV[envConfig.DATASOURCE]

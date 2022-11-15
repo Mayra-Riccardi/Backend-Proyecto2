@@ -1,6 +1,5 @@
-const Products = require ('../models/containers/products/products.container');
-/* const productsApi = new Products("product"); */
 const  { ProductsDao } = require("../models/daos/app.daos");
+
 
 const productsDao = new ProductsDao();
 
@@ -22,9 +21,8 @@ class ProductController {
         const { title, price, imageUrl, stock, description } = req.body
         if (!title || !price || !imageUrl, !stock, !description ) return null;
         
-        productsDao.idCount++
+        /* productsDao.idCount++ */
             const newProduct = {
-                id: productsDao.idCount,
                 title,
                 price,
                 imageUrl,

@@ -29,6 +29,7 @@ class MongoContainer {
     }
 
     async save(item) {
+        item.timestamp = Date.now()
         const newDocument = new this.model(item);
         return await newDocument.save();
     }
@@ -36,7 +37,7 @@ class MongoContainer {
     async update(id, item) {
         const updatedDocument = await this.model.updateOne(
             {_id: id},
-            { $set: {...item}}
+            { $set: {...item}, }
         );
        /*  if (!updatedDocument.matchedCount){
             console.log("Error")

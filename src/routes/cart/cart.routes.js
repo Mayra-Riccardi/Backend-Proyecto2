@@ -5,11 +5,14 @@ const cartController = require ('../../controllers/cart.controller')
 
 //ROUTES
 
+router.get('/', cartController.getCarts);
 router.post('/', cartController.createCart);
+router.get('/:idCart', cartController.getOneCart);
+router.get('/:idCart/products', cartController.getProductsCart);
 router.delete('/:idCart', cartController.deleteOneCart);
-router.get('/:idCart/products', cartController.getOneCart);
-router.post('/:idCart/products', cartController.saveOneProductCart);
-router.delete('/:idCart/products/:id_Prod', cartController.deleteOneProductCart);
+
+router.post('/:idCart/products/:idProd', cartController.saveOneProductCart); 
+router.delete('/:idCart/products/:idProd', cartController.deleteOneProductCart);
 
   
 module.exports = router;
