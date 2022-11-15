@@ -7,7 +7,7 @@ let CartDao;
 switch(envConfig.DATASOURCE){
     case 'file':
         ProductsDao = require('./products/products.file.dao');
-        /* CartsDao = require('./cart/'); */
+        CartDao = require('./carts/cart.file.dao');
     break;
 
     case 'memory':

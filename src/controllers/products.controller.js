@@ -1,5 +1,5 @@
 const  { ProductsDao } = require("../models/daos/app.daos");
-const HTTP_STATUS = require('../constants/api.constants');
+const HTTP_STATUS  = require('../constants/api.constants');
 const { successResponse } = require('../utils/api.utils');
 
 
@@ -11,7 +11,7 @@ class ProductController {
         try{
            const allProducts = await productsDao.getAll();
            const response = successResponse(allProducts);
-           res.json(response);
+           res.status(HTTP_STATUS.OK).json(response);
         }
         catch (error) {
             next(error);
@@ -23,7 +23,7 @@ class ProductController {
         try{
            const product = await productsDao.getById(idProduct)
            const response = successResponse(product)
-           res.json(response)
+           res.status(HTTP_STATUS.OK).json(response);
            return res.json(product);
         }
         catch (error) {
@@ -45,7 +45,7 @@ class ProductController {
         
             const saveProduct = await productsDao.save(newProduct);
             const response = successResponse(saveProduct);
-            res.json(response);
+            res.status(HTTP_STATUS.OK).json(response);
         }
         catch (error) {
             next(error);
@@ -58,7 +58,7 @@ class ProductController {
         try{ 
             const updatedProduct = await productsDao.update(idProduct, body)
             const response = successResponse(updatedProduct);
-            res.json(response);
+            res.status(HTTP_STATUS.OK).json(response);
         }
         catch (error) {
             next(error);
@@ -70,7 +70,7 @@ class ProductController {
         try{
             const deletedProduct = await productsDao.delete(idProduct);
             const response = successResponse(deletedProduct);
-            res.json(response);
+            res.status(HTTP_STATUS.OK).json(response);
         }
         catch (error) {
             next(error);

@@ -3,7 +3,7 @@ const MongoContainer = require("../../containers/mongo.container");
 const ProductsMongoDao = require('../products/products.mongo.dao');
 
 const { HttpError } = require('../../../utils/api.utils');
-const { HTTP_STATUS } = require('../../../constants/api.constants');
+const  HTTP_STATUS  = require('../../../constants/api.constants');
 
 const productsMongoDao = new ProductsMongoDao
 

@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose');
 const dbConfig = require('../../db/db.config');
 
-const { HTTP_STATUS } = require('../../constants/api.constants');
+const  HTTP_STATUS  = require('../../constants/api.constants');
 const { HttpError } = require('../../utils/api.utils');
 
 class MongoContainer {

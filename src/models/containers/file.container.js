@@ -1,6 +1,9 @@
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
+const { HttpError } = require('../../utils/api.utils');
+const  HTTP_STATUS  = require('../../constants/api.constants');
+
 
 class FileContainer {
     constructor(resource) {
@@ -19,7 +22,10 @@ class FileContainer {
     async getById(id) {
         const file = await this.getAll();
         const fileId = file.find((item) => item.id == id);
-        fileId == undefined? (fileId = null) : fileId;
+        if (!fileId) {
+          const message = `Resource with id ${id} does not exist in our records.`;
+          throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+        }
         return fileId
       }
 
@@ -39,6 +45,11 @@ class FileContainer {
         const {title, price, imageUrl, stock, description } = item;
         const list = await this.getAll();
         const index = list.findIndex((item) => item.id == productId)
+
+        if (index === -1) {
+          const message = `${this.resource} with id ${id} does not exist in our records`;
+          throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
+        }
        
 
         const files = await this.getAll();
@@ -63,9 +74,9 @@ class FileContainer {
 
         await fs.promises.writeFile(`./${this.resource}`, JSON.stringify(filteredArray, null, 2));
         
-        if (filteredArray.length === file.length) {
-          const message = `Resource with id ${id} does not exist`;
-          console.log(message);
+        if (filteredArray === -1) {
+          const message = `${this.resource} with id ${id} does not exist in our records`;
+          throw new HttpError(HTTP_STATUS.NOT_FOUND, message);
         }
         
         return filteredArray

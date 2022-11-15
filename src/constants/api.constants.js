@@ -6,6 +6,4 @@ const HTTP_STATUS = {
   INTERNAL_ERROR: 500,
 };
 
-module.exports = {
-  HTTP_STATUS
-}
+module.exports = HTTP_STATUS;

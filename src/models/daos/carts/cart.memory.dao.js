@@ -1,7 +1,7 @@
 const MemoryContainer = require('../../containers/memory.container');
 
 const { HttpError } = require('../../../utils/api.utils');
-const { HTTP_STATUS } = require('../../../constants/api.constants');
+const  HTTP_STATUS  = require('../../../constants/api.constants');
 
 
 

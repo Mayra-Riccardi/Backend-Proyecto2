@@ -1,6 +1,7 @@
 //IMPORTACIONES
 const express = require ('express');
 const appRoutes = require ('./routes/index');
+const errorMiddleware = require ('./middlewares/error.middleware')
 
 //DEFINIMOS CONSTANTE PARA EL SERVIDOR EXPRESS
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.static('public'));
 
 //ROUTES
 app.use('/', appRoutes);
+app.use(errorMiddleware)
 
 
 
@@ -41,6 +43,3 @@ const connectedServer = app.listen(PORT, () => {
     
   });
   
-  connectedServer.on("error", (error) => {
-    res.send(`error:`, error.message);
-  });

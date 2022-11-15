@@ -1,0 +1,19 @@
+[
+  {
+    "id": "95506815-cedc-465e-86dc-e7fe5eeee50d",
+    "timestamp": 1668539073196,
+    "title": "prueba nueva",
+    "price": 500,
+    "imageUrl": "http://imagen.png",
+    "stock": 5,
+    "description": "nfjnsdkfbsfdksbdfskfs"
+  },
+  {
+    "id": "6fb37cea-213d-40fb-b515-5ee78febf794",
+    "title": "prueba",
+    "price": 500,
+    "imageUrl": "http://imagen.png",
+    "stock": 5,
+    "description": "nfjnsdkfbsfdksbdfskfs"
+  }
+]

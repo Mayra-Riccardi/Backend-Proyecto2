@@ -1,6 +1,6 @@
 const FileContainer = require('../../containers/file.container');
-const fs = require ('fs')
-/* const products = require ('../../../db/data/products.json') */
+
+
 
 class ProductsFilesDao extends FileContainer {
   constructor() {

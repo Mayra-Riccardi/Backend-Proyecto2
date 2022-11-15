@@ -99,4 +99,4 @@ class CartsController {
 }
 
 
-module.exports = new CartsController
+module.exports = new CartsController()
